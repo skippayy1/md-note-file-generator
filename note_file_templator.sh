@@ -3,23 +3,10 @@
 echo "Create a markdown file with template inside class directory for notes"
 
 # variable declaration
-current_date_time=$(date)
+current_date_time=$(date "+%Y-%m-%d_%H-%M-%S")
 filename=""
 directory=""
-filetemplate="
-***
-[]()
-[]()
-[]()
-***
-> [!NOTE] Rappels
-> 
-##
-
-##
-
-##
-"
+filetemplate="./template.md"
 
 # user input
 read -p "Enter file name: " filename
@@ -40,4 +27,11 @@ else # Create the file as per usual
     echo "Creating file $filename at $directory."
     touch "$directory/$filename.md"
 fi
-echo "$filetemplate" >> "$directory/$filename.md" # Add the template to the file
+
+# append template contents to newly created file, if the template exists
+if [ -f "$filetemplate" ]; then
+    cat "$filetemplate" >> "$directory/$filename.md"
+    echo "Template added to $filename.md"
+else
+    echo "Warning: Template file $filetemplate not found. Skipping template addition."
+fi

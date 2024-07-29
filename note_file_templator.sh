@@ -19,7 +19,7 @@ if [ ! -d "$directory" ]; then
     mkdir -p "$directory" || { echo "Failed to create directory $directory. Exiting."; exit 1; }
 fi
 # Check if file already exists in dir
-if [ -f "$file"]; then # If it does change the name with current date and time to prevent race condition
+if [ -f "$file"]; then # If it does change the name with current date and time to prevent error
     echo "File $filename.md already exists, creating file with number"
     touch "$directory/$filename$current_date_time.md" 
     $filename="$filename$amount_created"

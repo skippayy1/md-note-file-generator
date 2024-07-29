@@ -10,7 +10,7 @@ filetemplate="./template.md"
 
 # user input
 read -p "Enter file name: " filename
-read -p "Enter desire directory path: " directory
+read -p "Enter desired directory path: " directory
 
 file="$directory/$filename.md"
 # Create dir if it doesnt exist
